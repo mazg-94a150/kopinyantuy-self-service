@@ -9,8 +9,37 @@
 
 ---
 
+## 👥 Profil Kelompok & Tugas
+
+**Mata Kuliah:** Antar Muka Komputer  
+**Kelompok:** 2  
+
+| No. | Nama Anggota | NIM |
+| :---: | :--- | :---: |
+| 1 | **Cahya Heryana** | 2503321094 |
+| 2 | **Ghaisan Adiend Fathan Al adli** | 2503321067 |
+| 3 | **Muhammad Rahsya Erlangga** | 2503321084 |
+
+---
+
 ## 🔗 Live Demo Web
 🌐 **Coba Aplikasi Kiosk Langsung:** [https://mazg-94a150.github.io/kopinyantuy-self-service/](https://mazg-94a150.github.io/kopinyantuy-self-service/)
+
+---
+
+## 📸 Tampilan Antarmuka Aplikasi
+
+### 1. Layar Selamat Datang (Welcome Screen)
+Halaman awal kiosk yang ramah pengguna untuk memulai pesanan.
+![Layar Selamat Datang](https://raw.githubusercontent.com/mazg-94a150/kopinyantuy-self-service/main/welcome-screen.png)
+
+### 2. Layar Pemilihan Menu (Menu Screen)
+Daftar pilihan kopi & snack lengkap dengan filter kategori, harga, dan tombol pemicu keranjang.
+![Layar Pemilihan Menu](https://raw.githubusercontent.com/mazg-94a150/kopinyantuy-self-service/main/menu-screen.png)
+
+### 3. Layar Metode Pembayaran & Form Pelanggan (Payment Screen)
+Form pengisian nama pemesan, nomor meja/keterangan, serta pilihan metode pembayaran.
+![Layar Pembayaran](https://raw.githubusercontent.com/mazg-94a150/kopinyantuy-self-service/main/payment-screen.png)
 
 ---
 
@@ -47,6 +76,9 @@
 
 ```text
 kopinyantuy-self-service/
-├── index.html     # Kode utama antarmuka & logika JS
-├── style.css      # File stylesheet desain visual
-└── README.md      # Dokumentasi resmi proyek
+├── index.html          # Kode utama antarmuka & logika JS
+├── style.css           # File stylesheet desain visual
+├── welcome-screen.png  # Gambar preview layar utama
+├── menu-screen.png     # Gambar preview daftar menu
+├── payment-screen.png  # Gambar preview pembayaran
+└── README.md           # Dokumentasi resmi proyek
