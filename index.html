@@ -9,215 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    /* =========================================
-       VARIABEL WARNA (Skema Hijau & Krem KopiNyantuy)
-       ========================================= */
-    :root {
-      --primary: #6B8A5A;        /* Hijau sage untuk tombol dan aksen */
-      --primary-hover: #5A774B;  /* Hijau lebih gelap untuk hover */
-      --header-bg: #354430;      /* Hijau tua gelap untuk header */
-      --sidebar-bg: #EEF3E5;     /* Krem kehijauan terang untuk sidebar */
-      --bg-body: #F8FAF6;        /* Krem sangat terang untuk latar utama */
-      --bg-card: #FFFFFF;        /* Putih bersih untuk kartu */
-      --text-main: #243021;      /* Hijau kehitaman untuk teks utama */
-      --text-muted: #6B7B66;     /* Hijau keabu-abuan untuk teks deskripsi */
-      --text-header: #FFFFFF;    /* Teks putih khusus di header */
-      --border-color: #D3DFCD;   /* Garis batas hijau pastel */
-      --shadow-sm: 0 2px 8px rgba(53, 68, 48, 0.05);
-      --shadow-md: 0 4px 12px rgba(53, 68, 48, 0.1);
-    }
-    
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body {
-      font-family: 'Manrope', sans-serif;
-      background-color: var(--bg-body);
-      color: var(--text-main);
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    /* SISTEM LAYAR (SPA) */
-    .screen {
-      display: none;
-      height: 100vh;
-      width: 100vw;
-      flex-direction: column;
-    }
-    .screen.active { display: flex; }
-
-    /* =========================================
-       1. LAYAR SELAMAT DATANG
-       ========================================= */
-    #welcome-screen {
-      justify-content: center;
-      align-items: center;
-      background: var(--sidebar-bg); /* Menggunakan warna krem kehijauan */
-      text-align: center;
-      padding: 40px;
-    }
-    .welcome-logo { font-size: 5rem; margin-bottom: 20px; }
-    .welcome-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; color: var(--text-main); }
-    .welcome-title span { color: var(--primary); }
-    .welcome-subtitle { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 50px; }
-    .btn-start {
-      background: var(--primary);
-      color: #fff;
-      font-size: 1.5rem;
-      font-weight: 700;
-      padding: 20px 50px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: var(--shadow-md);
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn-start:hover { background: var(--primary-hover); transform: scale(1.05); }
-
-    /* =========================================
-       2. LAYAR PILIHAN MENU
-       ========================================= */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      background: var(--header-bg); /* Latar hijau tua */
-      border-bottom: 1px solid var(--header-bg);
-      z-index: 10;
-    }
-    .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-header); display: flex; align-items: center; gap: 10px; }
-    .logo-accent { color: #A3C989; } /* Warna aksen lebih terang di atas header gelap */
-    .header-actions { display: flex; gap: 15px; }
-    .btn-cancel { background: #EEF3E5; color: var(--text-main); border: none; padding: 10px 20px; border-radius: 20px; font-weight: 700; cursor: pointer; }
-    .btn-pay { background: var(--primary); color: #fff; border: 1px solid #A3C989; padding: 10px 25px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
-    .btn-pay:hover { background: var(--primary-hover); }
-
-    .layout { display: flex; flex: 1; overflow: hidden; }
-
-    /* SIDEBAR KATEGORI (Krem Kehijauan) */
-    .sidebar {
-      width: 280px;
-      background: var(--sidebar-bg); /* Menyesuaikan referensi sidebar kiri */
-      padding: 30px 25px;
-      border-right: 1px solid var(--border-color);
-      overflow-y: auto;
-    }
-    .sidebar h2 { font-size: 1.2rem; margin-bottom: 20px; color: var(--text-main); }
-    .category-btn {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 15px;
-      margin-bottom: 10px;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .category-btn:hover, .category-btn.active {
-      background: var(--bg-card);
-      color: var(--text-main);
-      border-color: var(--border-color);
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* KONTEN MENU UTAMA */
-    .main-menu {
-      flex: 1;
-      padding: 30px 40px;
-      overflow-y: auto;
-      background: var(--bg-body);
-    }
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-    }
-
-    /* KARTU MENU (Latar Putih, Teks Kiri, Gambar Kanan) */
-    .menu-card {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 15px;
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
-    }
-    .menu-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--primary); }
-    .menu-card img {
-      width: 90px;
-      height: 90px;
-      border-radius: 8px;
-      object-fit: cover;
-      margin-left: 15px;
-    }
-    .menu-detail { flex: 1; text-align: left; }
-    .menu-detail h4 { font-size: 1.1rem; color: var(--text-main); margin-bottom: 4px; }
-    .menu-detail p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .menu-detail strong { display: block; color: var(--primary); font-size: 1.05rem; font-weight: 800; }
-    .badge { font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; margin-left: 5px; background: var(--sidebar-bg); color: var(--primary); vertical-align: middle; border: 1px solid var(--border-color); }
-
-    /* =========================================
-       3. LAYAR METODE PEMBAYARAN
-       ========================================= */
-    #payment-screen {
-      background: var(--bg-body);
-      align-items: center;
-      padding-top: 80px;
-    }
-    .payment-container {
-      background: var(--bg-card);
-      padding: 40px;
-      border-radius: 20px;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-md);
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-    }
-    .payment-container h2 { font-size: 2rem; margin-bottom: 10px; color: var(--text-main); }
-    .payment-container p { color: var(--text-muted); margin-bottom: 30px; }
-    .payment-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-bottom: 40px;
-    }
-    .payment-method {
-      background: var(--bg-body);
-      border: 2px solid var(--border-color);
-      border-radius: 12px;
-      padding: 25px 15px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-main);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.2s;
-    }
-    .payment-method:hover { border-color: var(--primary); background: var(--sidebar-bg); }
-    .payment-icon { font-size: 2rem; }
-    .payment-actions { display: flex; justify-content: space-between; gap: 15px; }
-    .btn-back { flex: 1; background: var(--sidebar-bg); color: var(--text-main); padding: 15px; border-radius: 12px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
-    .btn-back:hover { background: #D3DFCD; }
-    .btn-confirm { flex: 2; background: var(--primary); color: #fff; padding: 15px; border-radius: 12px; border: none; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
-    .btn-confirm:hover { background: var(--primary-hover); }
-  </style>
+  
+  <!-- Memanggil file style.css yang sudah dipisah -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -238,7 +32,7 @@
         <span>Kopi<span class="logo-accent">Nyantuy</span></span>
       </div>
       <div class="header-actions">
-        <button class="btn-cancel" onclick="navigateTo('welcome-screen')">Batal</button>
+        <button class="btn-cancel" onclick="batalkanPesanan()">Batal</button>
         <button class="btn-pay" onclick="navigateTo('payment-screen')">Lanjut Pembayaran →</button>
       </div>
     </header>
@@ -255,7 +49,9 @@
       <!-- Grid Menu -->
       <main class="main-menu">
         <div class="menu-grid">
-          <article class="menu-card" onclick="alert('Menu ditambahkan ke pesanan!')">
+          
+          <!-- Tambahan parameter harga pada fungsi tambahKeKeranjang -->
+          <article class="menu-card" onclick="tambahKeKeranjang('Kopi Susu Nyantuy', 18000)">
             <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=240&q=80" alt="Kopi Susu Nyantuy">
             <div class="menu-detail">
               <h4>Kopi Susu Nyantuy <span class="badge">Favorit</span></h4>
@@ -264,7 +60,7 @@
             </div>
           </article>
 
-          <article class="menu-card" onclick="alert('Menu ditambahkan ke pesanan!')">
+          <article class="menu-card" onclick="tambahKeKeranjang('Americano', 10000)">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmkkXsrVqRu40WBZ62zmAwcmm_LGw8fjF5EKbOlhG3JQ&s=10" alt="Americano">
             <div class="menu-detail">
               <h4>Americano</h4>
@@ -273,7 +69,7 @@
             </div>
           </article>
 
-          <article class="menu-card" onclick="alert('Menu ditambahkan ke pesanan!')">
+          <article class="menu-card" onclick="tambahKeKeranjang('Cappuccino', 20000)">
             <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=240&q=80" alt="Cappuccino">
             <div class="menu-detail">
               <h4>Cappuccino</h4>
@@ -282,7 +78,7 @@
             </div>
           </article>
 
-          <article class="menu-card" onclick="alert('Menu ditambahkan ke pesanan!')">
+          <article class="menu-card" onclick="tambahKeKeranjang('Matcha Latte', 20000)">
             <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=240&q=80" alt="Matcha Latte">
             <div class="menu-detail">
               <h4>Matcha Latte</h4>
@@ -291,7 +87,7 @@
             </div>
           </article>
 
-          <article class="menu-card" onclick="alert('Menu ditambahkan ke pesanan!')">
+          <article class="menu-card" onclick="tambahKeKeranjang('Croissant', 10000)">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHOjC99zBNxfzlWqqpamcTDOulc_rxXr1YcesiygGdkST82fiE2IcrrVU&s=10" alt="Croissant">
             <div class="menu-detail">
               <h4>Croissant</h4>
@@ -299,6 +95,7 @@
               <strong>Rp10.000</strong>
             </div>
           </article>
+          
         </div>
       </main>
     </div>
@@ -308,18 +105,27 @@
   <section id="payment-screen" class="screen">
     <div class="payment-container">
       <h2>Metode Pembayaran</h2>
-      <p>Silakan pilih metode pembayaran yang Anda inginkan.</p>
+      <p>Silakan isi data dan pilih metode pembayaran Anda.</p>
       
+      <!-- Kolom Input Data Pelanggan -->
+      <div style="text-align: left; margin-bottom: 25px;">
+        <label style="font-weight: bold; color: var(--text-main);">Nama Pemesan:</label>
+        <input type="text" id="nama-pelanggan" placeholder="Masukkan nama Anda" style="width: 100%; padding: 12px; margin: 8px 0 15px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Manrope', sans-serif;">
+        
+        <label style="font-weight: bold; color: var(--text-main);">Nomor Meja / Keterangan:</label>
+        <input type="text" id="nomor-meja" placeholder="Contoh: Meja 4 / Bawa Pulang" style="width: 100%; padding: 12px; margin-top: 8px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Manrope', sans-serif;">
+      </div>
+
       <div class="payment-grid">
-        <button class="payment-method" onclick="selectPayment(this)">
+        <button class="payment-method" onclick="selectPayment(this, 'QRIS / E-Wallet')">
           <span class="payment-icon">📱</span>
           QRIS / E-Wallet
         </button>
-        <button class="payment-method" onclick="selectPayment(this)">
+        <button class="payment-method" onclick="selectPayment(this, 'Kartu Debit/Kredit')">
           <span class="payment-icon">💳</span>
           Kartu Debit/Kredit
         </button>
-        <button class="payment-method" onclick="selectPayment(this)">
+        <button class="payment-method" onclick="selectPayment(this, 'Tunai di Kasir')">
           <span class="payment-icon">💵</span>
           Tunai di Kasir
         </button>
@@ -332,8 +138,11 @@
     </div>
   </section>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPT TERBARU (DENGAN HITUNG TOTAL HARGA) -->
   <script>
+    let keranjangPesanan = [];
+    let pilihanPembayaran = "";
+
     function navigateTo(screenId) {
       document.querySelectorAll('.screen').forEach(screen => {
         screen.classList.remove('active');
@@ -341,20 +150,93 @@
       document.getElementById(screenId).classList.add('active');
     }
 
-    function selectPayment(element) {
+    function batalkanPesanan() {
+      keranjangPesanan = [];
+      pilihanPembayaran = "";
+      document.getElementById('nama-pelanggan').value = "";
+      document.getElementById('nomor-meja').value = "";
+      alert("Pesanan dibatalkan.");
+      navigateTo('welcome-screen');
+    }
+
+    // Fungsi menyimpan pesanan DAN harga
+    function tambahKeKeranjang(namaMenu, harga) {
+      keranjangPesanan.push({nama: namaMenu, harga: harga});
+      alert(namaMenu + " ditambahkan! (Total item: " + keranjangPesanan.length + ")");
+    }
+
+    function selectPayment(element, metode) {
       document.querySelectorAll('.payment-method').forEach(btn => {
         btn.style.borderColor = 'var(--border-color)';
         btn.style.background = 'var(--bg-body)';
       });
       element.style.borderColor = 'var(--primary)';
       element.style.background = 'var(--sidebar-bg)';
+      pilihanPembayaran = metode;
     }
 
+    // Fungsi format angka ke Rupiah
+    function formatRupiah(angka) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+    }
+
+    // Fungsi memproses pesanan ke WhatsApp
     function finishOrder() {
-      alert("Terima kasih! Pembayaran Anda berhasil diproses. Silakan ambil struk Anda.");
-      navigateTo('welcome-screen');
+      let nama = document.getElementById('nama-pelanggan').value;
+      let meja = document.getElementById('nomor-meja').value;
+
+      if(keranjangPesanan.length === 0) {
+        alert("Keranjang masih kosong! Silakan pilih menu terlebih dahulu.");
+        navigateTo('menu-screen');
+        return;
+      }
+      if(!nama || !meja) {
+        alert("Mohon isi Nama Pemesan dan Nomor Meja terlebih dahulu!");
+        return;
+      }
+      if(!pilihanPembayaran) {
+        alert("Mohon pilih Metode Pembayaran!");
+        return;
+      }
+
+      // PENTING: GANTI DENGAN NOMOR WA KASIR (AWALAN 62)
+      let nomorKasir = "6281234567890"; 
+      
+      // Menghitung jumlah per item dan total harga keseluruhan
+      let rekapMenu = {};
+      let totalSemua = 0;
+
+      keranjangPesanan.forEach(function(item) {
+        if (rekapMenu[item.nama]) {
+          rekapMenu[item.nama].jumlah += 1;
+          rekapMenu[item.nama].subtotal += item.harga;
+        } else {
+          rekapMenu[item.nama] = {
+            jumlah: 1,
+            subtotal: item.harga
+          };
+        }
+        totalSemua += item.harga;
+      });
+      
+      let daftarMenu = "";
+      for (const [menu, data] of Object.entries(rekapMenu)) {
+        daftarMenu += `- ${data.jumlah}x ${menu} (${formatRupiah(data.subtotal)})%0A`;
+      }
+      
+      let pesan = `*PESANAN BARU KOPI NYANTUY*%0A%0A` +
+                  `👤 Nama: ${nama}%0A` +
+                  `🪑 Meja/Ket: ${meja}%0A` +
+                  `💳 Bayar via: ${pilihanPembayaran}%0A%0A` +
+                  `📝 *Detail Pesanan:*%0A${daftarMenu}%0A` +
+                  `💰 *TOTAL: ${formatRupiah(totalSemua)}*`;
+
+      // Buka WhatsApp
+      window.open(`https://wa.me/${nomorKasir}?text=${pesan}`, "_blank");
+      
+      // Reset aplikasi
+      batalkanPesanan();
     }
   </script>
-
 </body>
 </html>
