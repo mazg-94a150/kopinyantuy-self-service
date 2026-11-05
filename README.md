@@ -31,15 +31,16 @@
 
 ### 1. Layar Selamat Datang (Welcome Screen)
 Halaman awal kiosk yang ramah pengguna untuk memulai pesanan.
-![Layar Selamat Datang]<img width="1366" height="689" alt="Screenshot 2026-11-05 134144" src="https://github.com/user-attachments/assets/c487f950-406e-437e-b063-5364f9c88348" />
+![Layar Selamat Datang] <img width="1366" height="689" alt="Screenshot 2026-11-05 134144" src="https://github.com/user-attachments/assets/c487f950-406e-437e-b063-5364f9c88348" />
 
 ### 2. Layar Pemilihan Menu (Menu Screen)
 Daftar pilihan kopi & snack lengkap dengan filter kategori, harga, dan tombol pemicu keranjang.
-![Layar Pemilihan Menu]<img width="1366" height="695" alt="Screenshot 2026-11-05 134721" src="https://github.com/user-attachments/assets/f410f46d-58a5-4fd4-b2aa-ad5184b1e812" />
+![Layar Pemilihan Menu] <img width="1366" height="695" alt="Screenshot 2026-11-05 134721" src="https://github.com/user-attachments/assets/f410f46d-58a5-4fd4-b2aa-ad5184b1e812" />
 
 ### 3. Layar Metode Pembayaran & Form Pelanggan (Payment Screen)
 Form pengisian nama pemesan, nomor meja/keterangan, serta pilihan metode pembayaran.
-![Layar Pembayaran](https://raw.githubusercontent.com/mazg-94a150/kopinyantuy-self-service/main/payment-screen.png)
+![Layar Pembayaran] <img width="1365" height="691" alt="Screenshot 2026-11-05 134929" src="https://github.com/user-attachments/assets/d1fe0972-0aaa-4a06-b567-7a811b9d772c" />
+
 
 ---
 
