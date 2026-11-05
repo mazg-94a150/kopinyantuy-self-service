@@ -35,7 +35,7 @@ Halaman awal kiosk yang ramah pengguna untuk memulai pesanan.
 
 ### 2. Layar Pemilihan Menu (Menu Screen)
 Daftar pilihan kopi & snack lengkap dengan filter kategori, harga, dan tombol pemicu keranjang.
-![Layar Pemilihan Menu](https://raw.githubusercontent.com/mazg-94a150/kopinyantuy-self-service/main/menu-screen.png)
+![Layar Pemilihan Menu]<img width="1366" height="695" alt="Screenshot 2026-11-05 134721" src="https://github.com/user-attachments/assets/f410f46d-58a5-4fd4-b2aa-ad5184b1e812" />
 
 ### 3. Layar Metode Pembayaran & Form Pelanggan (Payment Screen)
 Form pengisian nama pemesan, nomor meja/keterangan, serta pilihan metode pembayaran.
