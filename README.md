@@ -31,9 +31,7 @@
 
 ### 1. Layar Selamat Datang (Welcome Screen)
 Halaman awal kiosk yang ramah pengguna untuk memulai pesanan.
-![Layar Selamat Datang](https://raw.githubusercontent.com/mazg-94a150/kopinyantuy-self-service/main/<img width="1366" height="689" alt="Screenshot 2026-11-05 134144" src="https://github.com/user-attachments/assets/c487f950-406e-437e-b063-5364f9c88348" />)
 ![Layar Selamat Datang](https://raw.githubusercontent.com/mazg-94a150/kopinyantuy-self-service/main/)<img width="1366" height="689" alt="Screenshot 2026-11-05 134144" src="https://github.com/user-attachments/assets/c487f950-406e-437e-b063-5364f9c88348" />
-
 
 ### 2. Layar Pemilihan Menu (Menu Screen)
 Daftar pilihan kopi & snack lengkap dengan filter kategori, harga, dan tombol pemicu keranjang.
